@@ -8,42 +8,16 @@
 
 ### Introduction
 
-+ In programming and software development, fuzzing or fuzz testing is an automated software testing technique that
-  involves providing invalid, unexpected, or random data as inputs to a computer program.
-    + Failing built-in code assertions
-    + Potential memory leaks
-
-**Fuzz testing is a process of testing APIs with generated data.** The most common forms are:
-- **Mutation based fuzzing** which mutates existing data samples (aka the test corpus) to create test data;
-- **Generation based fuzzing** which produces new test data based on models of the input.
-
++ Fuzzing is a technique used in software testing to find bugs or vulnerabilities in a program by automatically generating and inputting random or malformed data.
 
 **Fuzz testing is valuable for:**
-- Software that receives inputs from untrusted sources **(security)**;
-- Sanity checking the equivalence of two complex algorithms **(correctness)**;
-- Verifying the stability of a high-volume API that takes complex inputs **(stability)**,
-  e.g. a decompressor, even if all the inputs are trusted.
-- 
-**Fuzzing is typically used to find the following kinds of bugs:**
-- Bugs specific to C/C++ that require the *[sanitizers](https://github.com/google/sanitizers)* to catch:
-  - Use-after-free, buffer overflows
-  - Uses of uninitialized memory
-  - Memory leaks
-- Arithmetic bugs:
-  - Div-by-zero, int/float overflows, invalid bitwise shifts
-- Plain crashes:
-  - NULL dereferences, Uncaught exceptions
-- Concurrency bugs:
-  - Data races, Deadlocks
-- Resource usage bugs:
-  - Memory exhaustion, hangs or infinite loops, infinite recursion (stack overflows)
-- Logical bugs:
-  - Discrepancies between two implementations of the same protocol ([example](https://blog.fuzzing-project.org/31-Fuzzing-Math-miscalculations-in-OpenSSLs-BN_mod_exp-CVE-2015-3193.html))
-  - Round-trip consistency bugs (e.g. compress the input, decompress back, - compare with the original)
-  - Assertion failures
+- Testing the robustness of a software application against different inputs
+- Finding vulnerabilities or security weaknesses in software
+- Improving software quality by uncovering edge cases and boundary conditions that might not be discovered in manual testing.
+
+In summary, fuzzing is an automated technique for discovering bugs and vulnerabilities in software applications by feeding them with random or malformed input data.
 
 ### Usage
-Fuzzing is used mostly as an automated technique to expose vulnerabilities in security-critical programs that might be exploited with malicious intent.
 
 Go supports fuzzing in its standard toolchain beginning in Go 1.18. Native Go fuzz tests are supported by [OSS-Fuzz](https://google.github.io/oss-fuzz/getting-started/new-project-guide/go-lang/#native-go-fuzzing-support).
 
